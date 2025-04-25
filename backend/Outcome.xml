@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?><PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema"><Header copyright="(C) Copyright IBM Corp. 1994, 2016">
+<Application name="IBM SPSS Modeler Common" version="18.0.0.0"/>
+<Timestamp>Fri Apr 25 21:42:24 2025</Timestamp>
+</Header><DataDictionary numberOfFields="8">
+<DataField dataType="double" displayName="Case_Duration_Days" name="Case_Duration_Days" optype="continuous"/>
+<DataField dataType="double" displayName="Case_ID" name="Case_ID" optype="continuous"/>
+<DataField dataType="string" displayName="Judge" name="Judge" optype="categorical">
+<Value value="Judge A"/>
+<Value value="Judge B"/>
+<Value value="Judge C"/>
+<Value value="Judge D"/>
+</DataField>
+<DataField dataType="double" displayName="Lawyer_Experience_Years" name="Lawyer_Experience_Years" optype="continuous"/>
+<DataField dataType="string" displayName="Legal_Representation" name="Legal_Representation" optype="categorical">
+<Value value="No"/>
+<Value value="Yes"/>
+</DataField>
+<DataField dataType="double" displayName="Number_of_Witnesses" name="Number_of_Witnesses" optype="continuous"/>
+<DataField dataType="string" displayName="Outcome" name="Outcome" optype="categorical">
+<Value value="Dismissed"/>
+<Value value="Guilty"/>
+<Value value="Not Guilty"/>
+<Value value="Settled"/>
+</DataField>
+<DataField dataType="string" displayName="Severity_of_Charges" name="Severity_of_Charges" optype="categorical">
+<Value value="High"/>
+<Value value="Low"/>
+<Value value="Medium"/>
+</DataField>
+</DataDictionary><TransformationDictionary>
+<DerivedField dataType="double" name="Case_Duration_DaysNorm" optype="continuous">
+<NormContinuous field="Case_Duration_Days">
+<LinearNorm norm="-1.42640227487731" orig="50"/>
+<LinearNorm norm="1.70453825718885" orig="723"/>
+</NormContinuous>
+</DerivedField>
+<DerivedField dataType="double" name="Case_IDNorm" optype="continuous">
+<NormContinuous field="Case_ID">
+<LinearNorm norm="-1.58354278282115" orig="1"/>
+<LinearNorm norm="1.68532057982667" orig="79"/>
+</NormContinuous>
+</DerivedField>
+<DerivedField dataType="double" name="JudgeValue0" optype="categorical">
+<NormDiscrete field="Judge" value="Judge A"/>
+</DerivedField>
+<DerivedField dataType="double" name="JudgeValue1" optype="categorical">
+<NormDiscrete field="Judge" value="Judge B"/>
+</DerivedField>
+<DerivedField dataType="double" name="JudgeValue2" optype="categorical">
+<NormDiscrete field="Judge" value="Judge C"/>
+</DerivedField>
+<DerivedField dataType="double" name="JudgeValue3" optype="categorical">
+<NormDiscrete field="Judge" value="Judge D"/>
+</DerivedField>
+<DerivedField dataType="double" name="Lawyer_Experience_YearsNorm" optype="continuous">
+<NormContinuous field="Lawyer_Experience_Years">
+<LinearNorm norm="-2.02009818611937" orig="1"/>
+<LinearNorm norm="1.34466022850407" orig="30"/>
+</NormContinuous>
+</DerivedField>
+<DerivedField dataType="double" name="Legal_RepresentationValue0" optype="categorical">
+<NormDiscrete field="Legal_Representation" value="No"/>
+</DerivedField>
+<DerivedField dataType="double" name="Legal_RepresentationValue1" optype="categorical">
+<NormDiscrete field="Legal_Representation" value="Yes"/>
+</DerivedField>
+<DerivedField dataType="double" name="Number_of_WitnessesNorm" optype="continuous">
+<NormContinuous field="Number_of_Witnesses">
+<LinearNorm norm="-1.93570527897424" orig="0"/>
+<LinearNorm norm="1.62226503686462" orig="15"/>
+</NormContinuous>
+</DerivedField>
+<DerivedField dataType="double" name="OutcomeValue0" optype="categorical">
+<NormDiscrete field="Outcome" value="Dismissed"/>
+</DerivedField>
+<DerivedField dataType="double" name="OutcomeValue1" optype="categorical">
+<NormDiscrete field="Outcome" value="Guilty"/>
+</DerivedField>
+<DerivedField dataType="double" name="OutcomeValue2" optype="categorical">
+<NormDiscrete field="Outcome" value="Not Guilty"/>
+</DerivedField>
+<DerivedField dataType="double" name="OutcomeValue3" optype="categorical">
+<NormDiscrete field="Outcome" value="Settled"/>
+</DerivedField>
+<DerivedField dataType="double" name="Severity_of_ChargesValue0" optype="categorical">
+<NormDiscrete field="Severity_of_Charges" value="High"/>
+</DerivedField>
+<DerivedField dataType="double" name="Severity_of_ChargesValue1" optype="categorical">
+<NormDiscrete field="Severity_of_Charges" value="Low"/>
+</DerivedField>
+<DerivedField dataType="double" name="Severity_of_ChargesValue2" optype="categorical">
+<NormDiscrete field="Severity_of_Charges" value="Medium"/>
+</DerivedField>
+</TransformationDictionary><NeuralNetwork activationFunction="tanh" algorithmName="MLP" functionName="classification"><Extension extender="spss.com" name="modelID" value="0"/><MiningSchema>
+<MiningField importance="0.312295195918425" name="Case_Duration_Days"/>
+<MiningField importance="0.0901367725282694" name="Case_ID"/>
+<MiningField importance="0.115871771112361" name="Judge"/>
+<MiningField importance="0.121848390775034" name="Lawyer_Experience_Years"/>
+<MiningField importance="0.0514238052136228" name="Legal_Representation"/>
+<MiningField importance="0.24101207580142" name="Number_of_Witnesses"/>
+<MiningField importance="0.0674119886508683" name="Severity_of_Charges"/>
+<MiningField name="Outcome" usageType="predicted"/>
+</MiningSchema><ModelExplanation><PredictiveModelQuality dataUsage="training" targetField="Outcome"><ConfusionMatrix><ClassLabels><Array n="4" type="string">"Dismissed" "Guilty" "Not Guilty" "Settled"</Array></ClassLabels><Matrix><Array n="4" type="int">10 5 0 6</Array><Array n="4" type="int">4 10 1 7</Array><Array n="4" type="int">0 6 0 9</Array><Array n="4" type="int">3 6 1 12</Array></Matrix></ConfusionMatrix><LiftData targetFieldDisplayValue="Dismissed" targetFieldValue="Dismissed"><ModelLiftGraph><LiftGraph><XCoordinates><Array n="21" type="int">1 5 9 13 17 21 25 29 33 37 41 45 49 53 57 61 65 69 73 77 80</Array></XCoordinates><YCoordinates><Array n="21" type="int">0 0 0 0 1 0 1 2 1 1 0 4 1 3 1 0 3 0 3 1 0</Array></YCoordinates><BoundaryValues><Array n="21" type="real">0.742635024839051 0.691293270605068 0.558049524154981 0.438001952217685 0.347136170132263 0.3249593264562 0.29079623842715 0.235334002489098 0.21380643828144 0.197141342980756 0.1852169770705 0.173241424529871 0.165846518690993 0.153896270533348 0.134840509268692 0.103935622584813 0.0772876620161693 0.0647774744129408 0.0582225301441324 0.039726653343631 0.0279375689040077</Array></BoundaryValues><BoundaryValueMeans><Array n="21" type="real">0.742635024839051 0.72163029147692 0.600814613761398 0.517163139737213 0.376189124247486 0.33208423145895 0.302191609079395 0.258183819499158 0.222243984373404 0.201303922053008 0.187173078246225 0.176693251592888 0.167932261437377 0.159368750809487 0.142723826026086 0.11289587034761 0.087474452444185 0.0677660438406806 0.0595997450014095 0.0457707688866524 0.0303591770653448</Array></BoundaryValueMeans></LiftGraph></ModelLiftGraph></LiftData><LiftData targetFieldDisplayValue="Guilty" targetFieldValue="Guilty"><ModelLiftGraph><LiftGraph><XCoordinates><Array n="21" type="int">1 5 9 13 17 21 25 29 33 37 41 45 49 53 57 61 65 69 73 77 80</Array></XCoordinates><YCoordinates><Array n="21" type="int">0 2 2 1 1 1 1 2 0 0 1 0 1 0 2 1 3 0 2 2 0</Array></YCoordinates><BoundaryValues><Array n="21" type="real">0.621830766540702 0.562904257300529 0.484803598829823 0.458942019181194 0.425156606859435 0.390185648431751 0.322940775805368 0.309475255529119 0.27499509899273 0.244057573218733 0.227150291546809 0.207700622922469 0.194819135765571 0.183289700793309 0.172261158810213 0.159558900757776 0.152753267291633 0.150978275879895 0.142491581459979 0.132723349694396 0.117660135926946</Array></BoundaryValues><BoundaryValueMeans><Array n="21" type="real">0.621830766540702 0.580281174954591 0.519124899653548 0.466836129539692 0.434972424960171 0.411606693346366 0.348364800206411 0.316792985972273 0.290305599114862 0.260970994974206 0.235077760172626 0.214369417127962 0.197133302961486 0.185378134213038 0.175916815354587 0.162952652160521 0.155721502822575 0.151532109001425 0.144041645628855 0.13812710400165 0.122288612042375</Array></BoundaryValueMeans></LiftGraph></ModelLiftGraph></LiftData><LiftData targetFieldDisplayValue="Not Guilty" targetFieldValue="Not Guilty"><ModelLiftGraph><LiftGraph><XCoordinates><Array n="21" type="int">1 5 9 13 17 21 25 29 33 37 41 45 49 53 57 61 65 69 73 77 80</Array></XCoordinates><YCoordinates><Array n="21" type="int">0 1 1 3 1 1 0 2 2 1 2 1 1 1 1 3 1 0 0 0 0</Array></YCoordinates><BoundaryValues><Array n="21" type="real">0.356537342549109 0.344590136711623 0.325471543855618 0.314245117098971 0.297744259397374 0.288658365822533 0.272362472604703 0.260874289705982 0.235884068940715 0.220216587764828 0.201079022950214 0.148901254295963 0.139009220795318 0.0993609340970846 0.086739761868454 0.0732459674219799 0.0652113125056874 0.0577836157287761 0.0396298119949919 0.0256234945281126 0.0228549155420276</Array></BoundaryValues><BoundaryValueMeans><Array n="21" type="real">0.356537342549109 0.351009738327079 0.333434726790284 0.3178845481342 0.304870643718692 0.291797844659612 0.275881957022148 0.263893010954539 0.243062674524805 0.225026811401457 0.204542722669437 0.177844615512902 0.141418337366972 0.107820570973733 0.0948285071452892 0.0785742852575351 0.0688048026861615 0.0614863952718843 0.047166331231587 0.0313235219388581 0.0237945750328292</Array></BoundaryValueMeans></LiftGraph></ModelLiftGraph></LiftData><LiftData targetFieldDisplayValue="Settled" targetFieldValue="Settled"><ModelLiftGraph><LiftGraph><XCoordinates><Array n="21" type="int">1 5 9 13 17 21 25 29 33 37 41 45 49 53 57 61 65 69 73 77 80</Array></XCoordinates><YCoordinates><Array n="21" type="int">0 2 3 2 0 1 2 1 1 2 1 0 0 2 1 1 2 1 0 0 0</Array></YCoordinates><BoundaryValues><Array n="21" type="real">0.47162097709457 0.446218989316991 0.427524553266351 0.407331465747913 0.38535644150294 0.373824492314235 0.36778204987303 0.349696968263455 0.337446184490818 0.309353193157251 0.306535130862187 0.270126313279881 0.243431544397269 0.224153764985852 0.196091179724243 0.181094210074808 0.175585382215698 0.143613998295686 0.12616341137294 0.0910436000870293 0.0833985874178086</Array></BoundaryValues><BoundaryValueMeans><Array n="21" type="real">0.47162097709457 0.454415658536774 0.430350197501089 0.415380336790918 0.394054329165342 0.37628395720541 0.370613609460654 0.351608401637554 0.345277412001109 0.327489387436942 0.307422040206845 0.28658365722845 0.252862058863735 0.23428641183115 0.205034917045747 0.186403637827559 0.179369696142961 0.149916852710723 0.134144433245587 0.104749790239296 0.0851792506497785</Array></BoundaryValueMeans></LiftGraph></ModelLiftGraph></LiftData></PredictiveModelQuality></ModelExplanation><NeuralInputs>
+<NeuralInput id="0">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="Case_Duration_DaysNorm"/>
+</DerivedField>
+</NeuralInput>
+<NeuralInput id="1">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="Case_IDNorm"/>
+</DerivedField>
+</NeuralInput>
+<NeuralInput id="2">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="JudgeValue0"/>
+</DerivedField>
+</NeuralInput>
+<NeuralInput id="3">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="JudgeValue1"/>
+</DerivedField>
+</NeuralInput>
+<NeuralInput id="4">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="JudgeValue2"/>
+</DerivedField>
+</NeuralInput>
+<NeuralInput id="5">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="JudgeValue3"/>
+</DerivedField>
+</NeuralInput>
+<NeuralInput id="6">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="Lawyer_Experience_YearsNorm"/>
+</DerivedField>
+</NeuralInput>
+<NeuralInput id="7">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="Legal_RepresentationValue0"/>
+</DerivedField>
+</NeuralInput>
+<NeuralInput id="8">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="Legal_RepresentationValue1"/>
+</DerivedField>
+</NeuralInput>
+<NeuralInput id="9">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="Number_of_WitnessesNorm"/>
+</DerivedField>
+</NeuralInput>
+<NeuralInput id="10">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="Severity_of_ChargesValue0"/>
+</DerivedField>
+</NeuralInput>
+<NeuralInput id="11">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="Severity_of_ChargesValue1"/>
+</DerivedField>
+</NeuralInput>
+<NeuralInput id="12">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="Severity_of_ChargesValue2"/>
+</DerivedField>
+</NeuralInput>
+</NeuralInputs><NeuralLayer numberOfNeurons="3">
+<Neuron bias="0.294294269807758" id="13">
+<Con from="0" weight="-0.212241442932384"/>
+<Con from="1" weight="-0.0739077288106803"/>
+<Con from="2" weight="-0.179669333691603"/>
+<Con from="3" weight="-0.686669428461715"/>
+<Con from="4" weight="0.661266109638264"/>
+<Con from="5" weight="0.215705285333248"/>
+<Con from="6" weight="-0.296511851545022"/>
+<Con from="7" weight="0.0915630010096652"/>
+<Con from="8" weight="-0.377198927718123"/>
+<Con from="9" weight="-0.893332300253986"/>
+<Con from="10" weight="-0.232289924275506"/>
+<Con from="11" weight="0.38904288662043"/>
+<Con from="12" weight="0.372121414961748"/>
+</Neuron>
+<Neuron bias="0.0223344244022229" id="14">
+<Con from="0" weight="-1.71033936451003"/>
+<Con from="1" weight="0.588875955154062"/>
+<Con from="2" weight="-0.0997396681273353"/>
+<Con from="3" weight="0.481199659134909"/>
+<Con from="4" weight="-0.700149522390799"/>
+<Con from="5" weight="0.666722998779977"/>
+<Con from="6" weight="-0.681047832161883"/>
+<Con from="7" weight="0.0347980539112105"/>
+<Con from="8" weight="0.173842943941578"/>
+<Con from="9" weight="0.413595100023043"/>
+<Con from="10" weight="-0.0970634808054383"/>
+<Con from="11" weight="0.946569400018815"/>
+<Con from="12" weight="0.39787791101324"/>
+</Neuron>
+<Neuron bias="0.472671510186046" id="15">
+<Con from="0" weight="-0.357031861320138"/>
+<Con from="1" weight="-0.478355295024812"/>
+<Con from="2" weight="-0.0664297859184444"/>
+<Con from="3" weight="-0.350155402906239"/>
+<Con from="4" weight="-0.0428620004095137"/>
+<Con from="5" weight="-0.455135103780776"/>
+<Con from="6" weight="-0.0365408835932612"/>
+<Con from="7" weight="0.0241017928346992"/>
+<Con from="8" weight="0.383621583227068"/>
+<Con from="9" weight="0.0679901335388422"/>
+<Con from="10" weight="-0.00170825514942408"/>
+<Con from="11" weight="-0.346782503183931"/>
+<Con from="12" weight="-0.463885970879346"/>
+</Neuron>
+</NeuralLayer><NeuralLayer activationFunction="identity" normalizationMethod="softmax" numberOfNeurons="4">
+<Neuron bias="0.22608602735239" id="16">
+<Con from="13" weight="0.884941715498263"/>
+<Con from="14" weight="-0.959916338291446"/>
+<Con from="15" weight="-0.275761320255697"/>
+</Neuron>
+<Neuron bias="0.64829190784798" id="17">
+<Con from="13" weight="-0.455781278753421"/>
+<Con from="14" weight="-0.451215700830131"/>
+<Con from="15" weight="0.169067876879126"/>
+</Neuron>
+<Neuron bias="-0.175594100572606" id="18">
+<Con from="13" weight="-0.150383629721097"/>
+<Con from="14" weight="0.744159552103547"/>
+<Con from="15" weight="0.48402923764661"/>
+</Neuron>
+<Neuron bias="0.432368048303827" id="19">
+<Con from="13" weight="0.136605392431307"/>
+<Con from="14" weight="0.311999252316128"/>
+<Con from="15" weight="0.490940812509507"/>
+</Neuron>
+</NeuralLayer><NeuralOutputs>
+<NeuralOutput outputNeuron="16">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="OutcomeValue0"/>
+</DerivedField>
+</NeuralOutput>
+<NeuralOutput outputNeuron="17">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="OutcomeValue1"/>
+</DerivedField>
+</NeuralOutput>
+<NeuralOutput outputNeuron="18">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="OutcomeValue2"/>
+</DerivedField>
+</NeuralOutput>
+<NeuralOutput outputNeuron="19">
+<DerivedField dataType="double" optype="continuous">
+<FieldRef field="OutcomeValue3"/>
+</DerivedField>
+</NeuralOutput>
+</NeuralOutputs></NeuralNetwork></PMML>
